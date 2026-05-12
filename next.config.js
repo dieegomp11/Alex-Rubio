@@ -1,13 +1,17 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production'
+const basePath = isProd ? '/Alex-Rubio' : ''
+
 const nextConfig = {
   output: 'export',
-  basePath: '/Alex-Rubio',
-  assetPrefix: '/Alex-Rubio',
+  basePath,
+  assetPrefix: basePath,
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './image-loader.js',
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/Alex-Rubio',
+    NEXT_PUBLIC_BASE_PATH: basePath,
   },
 }
 
