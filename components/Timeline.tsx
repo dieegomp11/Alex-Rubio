@@ -131,13 +131,13 @@ export default function Timeline() {
                         className="rounded-full transition-all duration-300 flex-shrink-0"
                         style={{
                           width: 6, height: 6,
-                          backgroundColor: on ? t.accent : '#3a3a3a',
+                          backgroundColor: on ? t.timelineColor : '#3a3a3a',
                           transform: on ? 'scale(1.6)' : 'scale(1)',
                         }}
                       />
                       <span
                         className="font-display text-[0.7rem] md:text-xs tracking-[0.18em] uppercase whitespace-nowrap"
-                        style={{ color: on ? t.accent : '#444', transition: 'color 0.3s' }}
+                        style={{ color: on ? t.timelineColor : '#444', transition: 'color 0.3s' }}
                       >
                         {t.shortName}
                       </span>
@@ -151,7 +151,7 @@ export default function Timeline() {
                       className="mx-3 md:mx-5 h-px flex-shrink-0 transition-colors duration-500"
                       style={{
                         width: 32,
-                        backgroundColor: i < activeIdx ? TEAMS[activeIdx].accent : '#222',
+                        backgroundColor: i < activeIdx ? TEAMS[activeIdx].timelineColor : '#222',
                         opacity: 0.55,
                       }}
                     />
@@ -196,9 +196,9 @@ export default function Timeline() {
                     <div
                       className="font-display text-[0.7rem] tracking-[0.25em] uppercase px-3 py-1.5 rounded-sm"
                       style={{
-                        backgroundColor: team.accent + '1a',
-                        color: team.accent,
-                        border: `1px solid ${team.accent}35`,
+                        backgroundColor: team.timelineColor + '1a',
+                        color: team.timelineColor,
+                        border: `1px solid ${team.timelineColor}35`,
                       }}
                     >
                       {team.name}
@@ -224,7 +224,7 @@ export default function Timeline() {
                       <p className="font-mono text-[0.5rem] tracking-[0.2em] uppercase text-zinc-600 mb-1">Goles</p>
                       <div
                         className="font-display leading-none tabular"
-                        style={{ fontSize: 'clamp(2rem, 5vw, 4.8rem)', color: team.accent }}
+                        style={{ fontSize: 'clamp(2rem, 5vw, 4.8rem)', color: team.timelineColor }}
                       >
                         <span ref={el => { counterRefs.current[i] = el }}>{team.goals}</span>
                       </div>

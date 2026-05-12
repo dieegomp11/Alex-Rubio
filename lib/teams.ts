@@ -7,6 +7,7 @@ export type Team = {
   assists: number
   goalsPer90: number
   accent: string
+  timelineColor: string
   quoteColor: string
   badge: string
   quote: string
@@ -24,6 +25,7 @@ export const TEAMS: Team[] = [
     assists: 0,
     goalsPer90: 0.37,
     accent: '#CC1F1F',
+    timelineColor: '#CC1F1F',
     quoteColor: '#CC1F1F',
     badge: 'MRC',
     quote: 'El lugar donde empezó a curtirse de verdad.',
@@ -43,6 +45,7 @@ export const TEAMS: Team[] = [
     assists: 0,
     goalsPer90: 0.61,
     accent: '#22C55E',
+    timelineColor: '#22C55E',
     quoteColor: '#22C55E',
     badge: 'ANT',
     quote: 'Su explosión definitiva. Dos goles que casi cambian todo.',
@@ -62,6 +65,7 @@ export const TEAMS: Team[] = [
     assists: 2,
     goalsPer90: 0.56,
     accent: '#F5C800',
+    timelineColor: '#F5C800',
     quoteColor: '#F5C800',
     badge: 'VIL',
     quote: 'La referencia arriba. Figura de un equipo joven.',
@@ -81,6 +85,7 @@ export const TEAMS: Team[] = [
     assists: 0,
     goalsPer90: 0.43,
     accent: '#E8D44D',
+    timelineColor: '#ffffff',
     quoteColor: '#ffffff',
     badge: 'ALB',
     quote: 'El salto al fútbol profesional. Respondió con madurez.',
