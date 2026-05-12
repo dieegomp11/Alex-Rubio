@@ -22,11 +22,11 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Álex Rubio — Delantero',
-  description: 'Perfil del delantero Álex Rubio, jugador del Albacete BP en Segunda División.',
+  title: 'Álex Rubio | Web Oficial',
+  description: 'Web oficial de Álex Rubio, delantero del Albacete Balompié en Segunda División. Trayectoria, estadísticas y highlights.',
   openGraph: {
-    title: 'Álex Rubio — Delantero',
-    description: '71 goles. Velocidad como argumento.',
+    title: 'Álex Rubio | Web Oficial',
+    description: 'Delantero del Albacete Balompié. Trayectoria, estadísticas y highlights.',
   },
 }
 
