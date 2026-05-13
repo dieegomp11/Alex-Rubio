@@ -23,7 +23,7 @@ export default function Footer() {
               <div className="leading-none">
                 <span className="font-display uppercase text-zinc-500"
                   style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.3rem)', letterSpacing: '0.12em' }}>
-                  Álex
+                  Alex
                 </span>
                 <span className="font-display uppercase text-white ml-2"
                   style={{ fontSize: 'clamp(1.4rem, 2.8vw, 2.4rem)', letterSpacing: '-0.01em' }}>

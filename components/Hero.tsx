@@ -50,8 +50,8 @@ function PitchLines({ faint = false }: { faint?: boolean }) {
       {/* Center spot */}
       <circle cx="80" cy="450" r="5" fill="white" opacity={0.1 * o} />
       {/* Touchlines */}
-      <line x1="820" y1="148"  x2="1440" y2="148"  stroke="white" strokeWidth="1.5" opacity={0.1 * o} />
-      <line x1="820" y1="752"  x2="1440" y2="752"  stroke="white" strokeWidth="1.5" opacity={0.1 * o} />
+      <line x1="820" y1="148" x2="1440" y2="148" stroke="white" strokeWidth="1.5" opacity={0.1 * o} />
+      <line x1="820" y1="752" x2="1440" y2="752" stroke="white" strokeWidth="1.5" opacity={0.1 * o} />
       {/* Top-right corner arc */}
       <path d="M 1440 0 A 60 60 0 0 0 1380 60" stroke="white" strokeWidth="1.5" opacity={0.12 * o} />
       {/* Bottom-right corner arc */}
@@ -61,15 +61,15 @@ function PitchLines({ faint = false }: { faint?: boolean }) {
 }
 
 export default function Hero() {
-  const containerRef  = useRef<HTMLElement>(null)
-  const pitchRef      = useRef<HTMLDivElement>(null)
-  const nameRef       = useRef<HTMLDivElement>(null)
-  const subRef        = useRef<HTMLParagraphElement>(null)
-  const statsRef      = useRef<HTMLDivElement>(null)
-  const counterRef    = useRef<HTMLSpanElement>(null)
-  const videoSlotRef  = useRef<HTMLDivElement>(null)
-  const lightLineRef  = useRef<HTMLDivElement>(null)
-  const ctaRef        = useRef<HTMLButtonElement>(null)
+  const containerRef = useRef<HTMLElement>(null)
+  const pitchRef = useRef<HTMLDivElement>(null)
+  const nameRef = useRef<HTMLDivElement>(null)
+  const subRef = useRef<HTMLParagraphElement>(null)
+  const statsRef = useRef<HTMLDivElement>(null)
+  const counterRef = useRef<HTMLSpanElement>(null)
+  const videoSlotRef = useRef<HTMLDivElement>(null)
+  const lightLineRef = useRef<HTMLDivElement>(null)
+  const ctaRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -199,7 +199,7 @@ export default function Hero() {
           <h1 className="font-display uppercase leading-none">
             <span className="block text-zinc-400"
               style={{ fontSize: 'clamp(2rem, 8vw, 8.5rem)', letterSpacing: '-0.01em' }}>
-              ÁLEX
+              ALEX
             </span>
             <span className="block text-white"
               style={{ fontSize: 'clamp(3rem, 12vw, 13rem)', letterSpacing: '-0.02em', lineHeight: 0.85 }}>
@@ -276,7 +276,7 @@ export default function Hero() {
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
             className="transition-transform duration-200 ease-out group-hover:translate-x-2"
             style={{ color: 'var(--accent)' }}>
-            <path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
