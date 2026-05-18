@@ -226,37 +226,37 @@ export default function Hero() {
             Próximo partido
           </p>
           <div className="flex items-center gap-5 mb-3">
-            {/* Córdoba badge */}
-            <div className="flex flex-col items-center gap-1.5">
-              <div className="w-12 h-12 relative">
-                <Image src="/cordoba.png" alt="Córdoba CF" fill className="object-contain" sizes="48px" />
-              </div>
-              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">Córdoba</span>
-            </div>
-            {/* Centre */}
-            <div className="flex flex-col items-center gap-1">
-              <span className="font-display text-white tabular"
-                style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', lineHeight: 1 }}>
-                21:00
-              </span>
-              <span className="font-mono text-[0.44rem] tracking-[0.15em] uppercase text-zinc-600">vs</span>
-            </div>
-            {/* Albacete badge */}
+            {/* Albacete badge — local */}
             <div className="flex flex-col items-center gap-1.5">
               <div className="w-12 h-12 relative">
                 <Image src="/albacetepng.png" alt="Albacete BP" fill className="object-contain" sizes="48px" />
               </div>
               <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">Albacete</span>
             </div>
+            {/* Centre */}
+            <div className="flex flex-col items-center gap-1">
+              <span className="font-display text-white tabular"
+                style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', lineHeight: 1 }}>
+                18:30
+              </span>
+              <span className="font-mono text-[0.44rem] tracking-[0.15em] uppercase text-zinc-600">vs</span>
+            </div>
+            {/* Real Sociedad B badge — visitante */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-12 h-12 relative">
+                <Image src="/realsociedad.png" alt="Real Sociedad B" fill className="object-contain" sizes="48px" />
+              </div>
+              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">R. Sociedad B</span>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <span className="font-mono text-[0.5rem] tracking-[0.2em] uppercase"
               style={{ color: 'var(--accent)' }}>
-              Vie 15 May
+              Dom 24 May
             </span>
             <span className="w-px h-3 bg-zinc-700 flex-shrink-0" />
             <span className="font-mono text-[0.48rem] tracking-[0.15em] uppercase text-zinc-600">
-              Nuevo Arcángel · Córdoba
+              Carlos Belmonte · Albacete
             </span>
           </div>
         </div>
