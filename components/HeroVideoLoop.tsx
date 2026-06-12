@@ -5,13 +5,15 @@ import { useEffect, useRef, useState } from 'react'
 const B = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 const VIDEOS = [
-  `${B}/AlexRubioLeganes_cut.mp4?v=6`,
-  `${B}/AlexRubioVillarreal_cut1.mp4?v=6`,
-  `${B}/AlexRubioVillarreal_cut2.mp4?v=6`,
-  `${B}/AlexRubioVillarreal_cut3.mp4?v=6`,
-  `${B}/AlexRubioAntequera_cut1.mp4?v=6`,
-  `${B}/AlexRubioAntequera_cut2.mp4?v=6`,
+  `${B}/AlexRubioLeganes_cut.mp4?v=7`,
+  `${B}/AlexRubioVillarreal_cut1.mp4?v=7`,
+  `${B}/AlexRubioVillarreal_cut2.mp4?v=7`,
+  `${B}/AlexRubioVillarreal_cut3.mp4?v=7`,
+  `${B}/AlexRubioAntequera_cut1.mp4?v=7`,
+  `${B}/AlexRubioAntequera_cut2.mp4?v=7`,
 ]
+
+const POSTER = `${B}/hero_poster.jpg?v=7`
 
 const CROSSFADE_TRIGGER = 0.8  // seconds before end
 const CROSSFADE_MS      = 1400
@@ -21,6 +23,17 @@ export default function HeroVideoLoop() {
   const visibleIdxRef = useRef(0)       // always up-to-date, safe inside callbacks
   const videoRefs     = useRef<(HTMLVideoElement | null)[]>([])
   const transitioning = useRef(false)
+  const warmedUp      = useRef<Set<number>>(new Set([0]))
+
+  // Solo el vídeo siguiente al que se reproduce empieza a descargarse,
+  // así el primero no compite por el ancho de banda con los otros cinco.
+  const warmUpNext = (currentIdx: number) => {
+    const nextIdx = (currentIdx + 1) % VIDEOS.length
+    if (warmedUp.current.has(nextIdx)) return
+    warmedUp.current.add(nextIdx)
+    const v = videoRefs.current[nextIdx]
+    if (v) { v.preload = 'auto'; v.load() }
+  }
 
   useEffect(() => {
     videoRefs.current[0]?.play().catch(() => {})
@@ -61,7 +74,10 @@ export default function HeroVideoLoop() {
           src={src}
           muted
           playsInline
-          preload="auto"
+          autoPlay={i === 0}
+          poster={i === 0 ? POSTER : undefined}
+          preload={i === 0 ? 'auto' : 'none'}
+          onPlaying={() => warmUpNext(i)}
           onTimeUpdate={() => handleTimeUpdate(i)}
           className="absolute inset-0 w-full h-full object-cover"
           style={{
