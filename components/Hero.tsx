@@ -235,28 +235,28 @@ export default function Hero() {
             </div>
             {/* Centre */}
             <div className="flex flex-col items-center gap-1">
-              <span className="font-display text-white tabular"
+              <span className="font-display text-zinc-600 tabular"
                 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', lineHeight: 1 }}>
-                16:15
+                --:--
               </span>
               <span className="font-mono text-[0.44rem] tracking-[0.15em] uppercase text-zinc-600">vs</span>
             </div>
-            {/* Real Sociedad B badge — visitante */}
+            {/* Rival por determinar — temporada finalizada */}
             <div className="flex flex-col items-center gap-1.5">
-              <div className="w-12 h-12 relative">
-                <Image src="/realsociedad.png" alt="Real Sociedad B" fill className="object-contain" sizes="48px" />
+              <div className="w-12 h-12 rounded-full border border-dashed border-zinc-700 flex items-center justify-center">
+                <span className="font-display text-zinc-600" style={{ fontSize: '1.25rem', lineHeight: 1 }}>?</span>
               </div>
-              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">R. Sociedad B</span>
+              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-600">Por determinar</span>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <span className="font-mono text-[0.5rem] tracking-[0.2em] uppercase"
               style={{ color: 'var(--accent)' }}>
-              Dom 24 May
+              Temporada finalizada
             </span>
             <span className="w-px h-3 bg-zinc-700 flex-shrink-0" />
             <span className="font-mono text-[0.48rem] tracking-[0.15em] uppercase text-zinc-600">
-              Carlos Belmonte · Albacete
+              Calendario 26/27 próximamente
             </span>
           </div>
         </div>
