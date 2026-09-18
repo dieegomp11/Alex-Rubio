@@ -10,9 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# Cancelar a mitad deja el despliegue abierto en el servidor y el
+# siguiente push falla con "due to in progress deployment". Se encolan.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -40,6 +42,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
