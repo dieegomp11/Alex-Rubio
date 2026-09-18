@@ -1,11 +1,18 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroVideoLoop from './HeroVideoLoop'
 import SocialLinks from './SocialLinks'
+import {
+  CALENDARIO,
+  ESTADIO_CASA,
+  RIVALES,
+  formatearFecha,
+  proximoPartido,
+} from '@/lib/calendario'
 
 // Striker's POV — penalty box, D arc, corner arcs, halfway line
 function PitchLines({ faint = false }: { faint?: boolean }) {
@@ -60,7 +67,36 @@ function PitchLines({ faint = false }: { faint?: boolean }) {
   )
 }
 
+// Escudo del marcador. Los archivos tienen proporciones muy distintas
+// (unos cuadrados, otros verticales), así que se encajan en una caja fija
+// y se compensa la altura para que todos pesen visualmente lo mismo.
+function Escudo({ equipo }: { equipo: { nombre: string; escudo: string } }) {
+  return (
+    <div className="flex flex-col items-center gap-1.5">
+      <div className="w-12 h-12 relative flex items-center justify-center">
+        <Image
+          src={equipo.escudo}
+          alt={equipo.nombre}
+          fill
+          className="object-contain"
+          sizes="48px"
+          unoptimized={equipo.escudo.endsWith('.svg')}
+        />
+      </div>
+      <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">
+        {equipo.nombre}
+      </span>
+    </div>
+  )
+}
+
 export default function Hero() {
+  // El sitio es estático: si el partido se fijara solo en el build, la
+  // tarjeta se quedaría congelada en la jornada del último deploy. Se
+  // recalcula al montar para que avance sola en el navegador.
+  const [partido, setPartido] = useState(() => proximoPartido())
+  useEffect(() => { setPartido(proximoPartido()) }, [])
+
   const containerRef = useRef<HTMLElement>(null)
   const pitchRef = useRef<HTMLDivElement>(null)
   const nameRef = useRef<HTMLDivElement>(null)
@@ -220,45 +256,60 @@ export default function Hero() {
           </span>
         </p>
 
-        {/* Próximo partido */}
+        {/* Próximo partido — datos en lib/calendario.ts */}
         <div ref={statsRef} className="mb-8 md:mb-10">
           <p className="font-mono text-[0.48rem] tracking-[0.28em] uppercase text-zinc-600 mb-4">
             Próximo partido
           </p>
-          <div className="flex items-center gap-5 mb-3">
-            {/* Albacete badge — local */}
-            <div className="flex flex-col items-center gap-1.5">
-              <div className="w-12 h-12 relative">
-                <Image src="/albacetepng.png" alt="Albacete BP" fill className="object-contain" sizes="48px" />
-              </div>
-              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">Albacete</span>
-            </div>
-            {/* Centre */}
-            <div className="flex flex-col items-center gap-1">
-              <span className="font-display text-white tabular"
-                style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', lineHeight: 1 }}>
-                20:30
+          {partido ? (() => {
+            const rival = RIVALES[partido.rival]
+            const albacete = RIVALES.albacete
+            // El equipo de casa va siempre a la izquierda
+            const [izq, der] = partido.casa ? [albacete, rival] : [rival, albacete]
+            return (
+              <>
+                <div className="flex items-center gap-5 mb-3">
+                  <Escudo equipo={izq} />
+                  <div className="flex flex-col items-center gap-1">
+                    {partido.hora ? (
+                      <span className="font-display text-white tabular"
+                        style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', lineHeight: 1 }}>
+                        {partido.hora}
+                      </span>
+                    ) : (
+                      <span className="font-mono text-zinc-500 tracking-[0.1em] uppercase"
+                        style={{ fontSize: 'clamp(0.5rem, 1.1vw, 0.62rem)', lineHeight: 1.6 }}>
+                        Por confirmar
+                      </span>
+                    )}
+                    <span className="font-mono text-[0.44rem] tracking-[0.15em] uppercase text-zinc-600">vs</span>
+                  </div>
+                  <Escudo equipo={der} />
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-[0.5rem] tracking-[0.2em] uppercase"
+                    style={{ color: 'var(--accent)' }}>
+                    {formatearFecha(partido.fecha)} · Jornada {partido.j}
+                  </span>
+                  <span className="w-px h-3 bg-zinc-700 flex-shrink-0" />
+                  <span className="font-mono text-[0.48rem] tracking-[0.15em] uppercase text-zinc-600">
+                    {partido.casa ? ESTADIO_CASA : `Campo del ${rival.nombre}`}
+                  </span>
+                </div>
+              </>
+            )
+          })() : (
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[0.5rem] tracking-[0.2em] uppercase"
+                style={{ color: 'var(--accent)' }}>
+                Temporada finalizada
               </span>
-              <span className="font-mono text-[0.44rem] tracking-[0.15em] uppercase text-zinc-600">vs</span>
+              <span className="w-px h-3 bg-zinc-700 flex-shrink-0" />
+              <span className="font-mono text-[0.48rem] tracking-[0.15em] uppercase text-zinc-600">
+                {CALENDARIO.length} jornadas disputadas
+              </span>
             </div>
-            {/* Cordoba badge — visitante */}
-            <div className="flex flex-col items-center gap-1.5">
-              <div className="w-12 h-12 relative">
-                <Image src="/cordoba.png" alt="Córdoba CF" fill className="object-contain" sizes="48px" />
-              </div>
-              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">Córdoba</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[0.5rem] tracking-[0.2em] uppercase"
-              style={{ color: 'var(--accent)' }}>
-              18 Septiembre · Jornada 6
-            </span>
-            <span className="w-px h-3 bg-zinc-700 flex-shrink-0" />
-            <span className="font-mono text-[0.48rem] tracking-[0.15em] uppercase text-zinc-600">
-              Estadio Carlos Belmonte
-            </span>
-          </div>
+          )}
         </div>
 
         {/* CTA */}
