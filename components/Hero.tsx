@@ -237,22 +237,22 @@ export default function Hero() {
             <div className="flex flex-col items-center gap-1">
               <span className="font-display text-white tabular"
                 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', lineHeight: 1 }}>
-                19:00
+                20:30
               </span>
               <span className="font-mono text-[0.44rem] tracking-[0.15em] uppercase text-zinc-600">vs</span>
             </div>
-            {/* Oviedo badge — visitante */}
+            {/* Cordoba badge — visitante */}
             <div className="flex flex-col items-center gap-1.5">
               <div className="w-12 h-12 relative">
-                <Image src="/oviedo.webp" alt="Real Oviedo" fill className="object-contain" sizes="48px" />
+                <Image src="/cordoba.png" alt="Córdoba CF" fill className="object-contain" sizes="48px" />
               </div>
-              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">Oviedo</span>
+              <span className="font-mono text-[0.44rem] tracking-[0.12em] uppercase text-zinc-500">Córdoba</span>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <span className="font-mono text-[0.5rem] tracking-[0.2em] uppercase"
               style={{ color: 'var(--accent)' }}>
-              29 Agosto
+              18 Septiembre · Jornada 6
             </span>
             <span className="w-px h-3 bg-zinc-700 flex-shrink-0" />
             <span className="font-mono text-[0.48rem] tracking-[0.15em] uppercase text-zinc-600">
