@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Bebas_Neue, Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import { CALENDARIO, ESTADIO_CASA, RIVALES } from '@/lib/calendario'
 
 const bebasNeue = Bebas_Neue({
   weight: ['400'],
@@ -145,6 +146,37 @@ const websiteJsonLd = {
   about: { '@id': `${SITE_URL}/#person` },
 }
 
+// Los proximos partidos como SportsEvent: Google puede mostrarlos
+// como resultado enriquecido al buscar "Albacete proximo partido".
+// Solo los que quedan por jugar, para no publicar eventos caducados.
+const hoyISO = new Date().toISOString().slice(0, 10)
+const partidosJsonLd = CALENDARIO.filter((p) => p.fecha >= hoyISO).map((p) => {
+  const rival = RIVALES[p.rival]
+  const local = p.casa ? RIVALES.albacete : rival
+  const visitante = p.casa ? rival : RIVALES.albacete
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SportsEvent',
+    name: `${local.nombre} - ${visitante.nombre}`,
+    description: `Jornada ${p.j} de Segunda Division. ${local.nombre} recibe a ${visitante.nombre}.`,
+    startDate: p.hora ? `${p.fecha}T${p.hora}:00+02:00` : p.fecha,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    sport: 'Futbol',
+    location: {
+      '@type': 'Place',
+      name: p.casa ? ESTADIO_CASA : `Campo del ${rival.nombre}`,
+      address: { '@type': 'PostalAddress', addressCountry: 'ES' },
+    },
+    homeTeam: { '@type': 'SportsTeam', name: local.nombre },
+    awayTeam: { '@type': 'SportsTeam', name: visitante.nombre },
+    competitor: [
+      { '@type': 'SportsTeam', name: local.nombre },
+      { '@type': 'SportsTeam', name: visitante.nombre },
+    ],
+  }
+})
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${bebasNeue.variable} ${outfit.variable} ${jetbrainsMono.variable} grain`}>
@@ -157,6 +189,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+        {partidosJsonLd.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(partidosJsonLd) }}
+          />
+        )}
         {children}
       </body>
     </html>

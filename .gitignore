@@ -16,3 +16,16 @@ Thumbs.db
 
 # Claude
 .claude/
+
+# Archivos personales que no deben publicarse.
+# Todo lo que esté en public/ se sube al sitio, y GitHub Pages
+# tiene un límite de 1 GB: por esto falló el deploy de 6c9bcd4.
+public/Descargas/
+public/Descargas - copia/
+*.part
+
+# Artefactos de compilación y capturas de depuración
+tsconfig.tsbuildinfo
+debug_*.png
+shot_*.png
+*.tmp.js
