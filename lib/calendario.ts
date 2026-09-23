@@ -51,7 +51,7 @@ export const RIVALES: Record<string, Rival> = {
   almeria:        { nombre: 'Almería', estadio: 'Power Horse Stadium', escudo: '/escudos/almeria.webp' },
   mallorca:       { nombre: 'Mallorca', estadio: 'Estadi Mallorca Son Moix', escudo: '/escudos/mallorca.webp' },
   cadiz:          { nombre: 'Cádiz', estadio: 'Estadio Nuevo Mirandilla', escudo: '/escudos/cadiz.webp' },
-  andorra:        { nombre: 'Andorra', estadio: 'Estadi de la FAF', escudo: '/escudos/andorra.png' },
+  andorra:        { nombre: 'Andorra', estadio: "Estadi d'Encamp", escudo: '/escudos/andorra.png' },
   granada:        { nombre: 'Granada', estadio: 'Estadio Nuevo Los Cármenes', escudo: '/escudos/granada.png' },
   castellon:      { nombre: 'Castellón', estadio: 'Estadio Castalia', escudo: '/escudos/castellon.svg' },
   laspalmas:      { nombre: 'Las Palmas', estadio: 'Estadio de Gran Canaria', escudo: '/escudos/las-palmas.png' },
