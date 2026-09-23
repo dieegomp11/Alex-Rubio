@@ -293,7 +293,7 @@ export default function Hero() {
                   </span>
                   <span className="w-px h-3 bg-zinc-700 flex-shrink-0" />
                   <span className="font-mono text-[0.48rem] tracking-[0.15em] uppercase text-zinc-600">
-                    {partido.casa ? ESTADIO_CASA : `Campo del ${rival.nombre}`}
+                    {partido.casa ? ESTADIO_CASA : rival.estadio}
                   </span>
                 </div>
               </>

@@ -28,36 +28,38 @@ export type Partido = {
 
 export type Rival = {
   nombre: string
+  /** Nombre del estadio donde juega como local */
+  estadio: string
   escudo: string
 }
 
 /** Escudos: cada archivo vive en /public/escudos/ */
 export const RIVALES: Record<string, Rival> = {
-  albacete:       { nombre: 'Albacete',        escudo: '/escudos/albacete.png' },
-  cordoba:        { nombre: 'Córdoba',         escudo: '/escudos/cordoba.png' },
-  girona:         { nombre: 'Girona',          escudo: '/escudos/girona.webp' },
-  eibar:          { nombre: 'Eibar',           escudo: '/escudos/eibar.webp' },
-  valladolid:     { nombre: 'Valladolid',      escudo: '/escudos/valladolid.png' },
-  sporting:       { nombre: 'Sporting',        escudo: '/escudos/sporting.webp' },
-  eldense:        { nombre: 'Eldense',         escudo: '/escudos/eldense.webp' },
-  sabadell:       { nombre: 'Sabadell',        escudo: '/escudos/sabadell.webp' },
-  leganes:        { nombre: 'Leganés',         escudo: '/escudos/leganes.webp' },
-  celta:          { nombre: 'Celta Fortuna',   escudo: '/escudos/celta-fortuna.webp' },
-  burgos:         { nombre: 'Burgos',          escudo: '/escudos/burgos.webp' },
-  tenerife:       { nombre: 'Tenerife',        escudo: '/escudos/tenerife.webp' },
-  ceuta:          { nombre: 'Ceuta',           escudo: '/escudos/ceuta.webp' },
-  almeria:        { nombre: 'Almería',         escudo: '/escudos/almeria.webp' },
-  mallorca:       { nombre: 'Mallorca',        escudo: '/escudos/mallorca.webp' },
-  cadiz:          { nombre: 'Cádiz',           escudo: '/escudos/cadiz.webp' },
-  andorra:        { nombre: 'Andorra',         escudo: '/escudos/andorra.png' },
-  granada:        { nombre: 'Granada',         escudo: '/escudos/granada.png' },
-  castellon:      { nombre: 'Castellón',       escudo: '/escudos/castellon.svg' },
-  laspalmas:      { nombre: 'Las Palmas',      escudo: '/escudos/las-palmas.png' },
-  sociedadb:      { nombre: 'Real Sociedad B', escudo: '/escudos/sociedad-b.png' },
-  oviedo:         { nombre: 'Oviedo',          escudo: '/escudos/oviedo.webp' },
+  albacete:       { nombre: 'Albacete', estadio: 'Estadio Carlos Belmonte', escudo: '/escudos/albacete.png' },
+  cordoba:        { nombre: 'Córdoba', estadio: 'Estadio Nuevo Arcángel', escudo: '/escudos/cordoba.png' },
+  girona:         { nombre: 'Girona', estadio: 'Estadi Montilivi', escudo: '/escudos/girona.webp' },
+  eibar:          { nombre: 'Eibar', estadio: 'Estadio Municipal de Ipurúa', escudo: '/escudos/eibar.webp' },
+  valladolid:     { nombre: 'Valladolid', estadio: 'Estadio José Zorrilla', escudo: '/escudos/valladolid.png' },
+  sporting:       { nombre: 'Sporting', estadio: 'Estadio El Molinón', escudo: '/escudos/sporting.webp' },
+  eldense:        { nombre: 'Eldense', estadio: 'Estadio Nuevo Pepico Amat', escudo: '/escudos/eldense.webp' },
+  sabadell:       { nombre: 'Sabadell', estadio: 'Estadi Nova Creu Alta', escudo: '/escudos/sabadell.webp' },
+  leganes:        { nombre: 'Leganés', estadio: 'Estadio Butarque', escudo: '/escudos/leganes.webp' },
+  celta:          { nombre: 'Celta Fortuna', estadio: 'Estadio de Balaídos', escudo: '/escudos/celta-fortuna.webp' },
+  burgos:         { nombre: 'Burgos', estadio: 'Estadio El Plantío', escudo: '/escudos/burgos.webp' },
+  tenerife:       { nombre: 'Tenerife', estadio: 'Estadio Heliodoro Rodríguez López', escudo: '/escudos/tenerife.webp' },
+  ceuta:          { nombre: 'Ceuta', estadio: 'Estadio Alfonso Murube', escudo: '/escudos/ceuta.webp' },
+  almeria:        { nombre: 'Almería', estadio: 'Power Horse Stadium', escudo: '/escudos/almeria.webp' },
+  mallorca:       { nombre: 'Mallorca', estadio: 'Estadi Mallorca Son Moix', escudo: '/escudos/mallorca.webp' },
+  cadiz:          { nombre: 'Cádiz', estadio: 'Estadio Nuevo Mirandilla', escudo: '/escudos/cadiz.webp' },
+  andorra:        { nombre: 'Andorra', estadio: 'Estadi de la FAF', escudo: '/escudos/andorra.png' },
+  granada:        { nombre: 'Granada', estadio: 'Estadio Nuevo Los Cármenes', escudo: '/escudos/granada.png' },
+  castellon:      { nombre: 'Castellón', estadio: 'Estadio Castalia', escudo: '/escudos/castellon.svg' },
+  laspalmas:      { nombre: 'Las Palmas', estadio: 'Estadio de Gran Canaria', escudo: '/escudos/las-palmas.png' },
+  sociedadb:      { nombre: 'Real Sociedad B', estadio: 'Estadio de Zubieta', escudo: '/escudos/sociedad-b.png' },
+  oviedo:         { nombre: 'Oviedo', estadio: 'Estadio Carlos Tartiere', escudo: '/escudos/oviedo.webp' },
 }
 
-export const ESTADIO_CASA = 'Estadio Carlos Belmonte'
+export const ESTADIO_CASA = RIVALES.albacete.estadio
 
 // ─────────────────────────────────────────────────────────────
 //  LAS 42 JORNADAS

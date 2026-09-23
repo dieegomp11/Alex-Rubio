@@ -165,7 +165,7 @@ const partidosJsonLd = CALENDARIO.filter((p) => p.fecha >= hoyISO).map((p) => {
     sport: 'Futbol',
     location: {
       '@type': 'Place',
-      name: p.casa ? ESTADIO_CASA : `Campo del ${rival.nombre}`,
+      name: p.casa ? ESTADIO_CASA : rival.estadio,
       address: { '@type': 'PostalAddress', addressCountry: 'ES' },
     },
     homeTeam: { '@type': 'SportsTeam', name: local.nombre },
