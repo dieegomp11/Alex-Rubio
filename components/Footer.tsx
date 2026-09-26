@@ -74,24 +74,23 @@ export default function Footer() {
             </span>
           </div>
 
-          {/* Crafted by Fluentia */}
+          {/* Crafted by Diego Morales */}
           <div className="flex items-center gap-2">
             <span className="font-mono text-[0.44rem] tracking-[0.2em] uppercase text-zinc-700">
               Crafted with
             </span>
             <a
-              href="https://fluentiatech.es"
+              href="https://diegomorales.es"
               target="_blank"
               rel="noopener noreferrer"
-              className="opacity-40 hover:opacity-80 transition-opacity duration-200"
+              className="opacity-60 hover:opacity-100 transition-opacity duration-200"
             >
               <Image
-                src="/fluentia_clean.png"
-                alt="Fluentia"
-                width={64}
-                height={20}
+                src="/dm-logo-blanco.png"
+                alt="Diego Morales"
+                width={120}
+                height={69}
                 className="object-contain"
-                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </a>
             <span className="font-mono text-[0.44rem] tracking-[0.2em] uppercase text-zinc-700">
