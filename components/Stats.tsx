@@ -6,12 +6,12 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const STATS = [
-  { label: 'Goles',                              value: '0.43', percentile: 70.2 },
-  { label: 'Goles esperados (xG)',               value: '0.43', percentile: 76.2 },
-  { label: 'Tiros',                              value: '3.44', percentile: 89.3 },
-  { label: 'Tiros a puerta',                     value: '1.29', percentile: 81.0 },
-  { label: 'Oportunidades creadas',              value: '1.07', percentile: 70.2 },
-  { label: 'Posesión ganada (tercio ofensivo)',  value: '0.64', percentile: 66.7 },
+  { label: 'Goles',                              value: '0.38', percentile: 59.6 },
+  { label: 'Goles esperados (xG)',               value: '0.49', percentile: 78.7 },
+  { label: 'Tiros',                              value: '4.16', percentile: 96.6 },
+  { label: 'Tiros a puerta',                     value: '1.23', percentile: 76.4 },
+  { label: 'Oportunidades creadas',              value: '1.04', percentile: 65.2 },
+  { label: 'Posesión ganada (tercio ofensivo)',  value: '0.57', percentile: 51.7 },
 ]
 
 const BN_IMAGES = [
@@ -65,7 +65,7 @@ export default function Stats() {
         <div className="flex items-center gap-3 mb-16">
           <div className="w-8 h-px bg-zinc-400" />
           <span className="font-mono text-[0.6rem] tracking-[0.3em] uppercase text-zinc-500">
-            Estadísticas 24/25 · por 90' · Fuente FotMob
+            Estadísticas LaLiga2 25/26 · por 90' · Fuente FotMob
           </span>
         </div>
 
@@ -107,9 +107,9 @@ export default function Stats() {
             {/* Monument numbers — 3 best percentiles */}
             <div className="grid grid-cols-3 gap-3 md:gap-6 mb-12 md:mb-16">
               {[
-                { num: '3.44', label: 'Tiros / 90\'',       sub: 'Percentil 89' },
-                { num: '1.29', label: 'Tiros a puerta / 90\'', sub: 'Percentil 81' },
-                { num: '0.43', label: 'xG / 90\'',           sub: 'Percentil 76' },
+                { num: '4.16', label: 'Tiros / 90\'',       sub: 'Percentil 97' },
+                { num: '0.49', label: 'xG / 90\'',           sub: 'Percentil 79' },
+                { num: '1.23', label: 'Tiros a puerta / 90\'', sub: 'Percentil 76' },
               ].map(({ num, label, sub }) => (
                 <div key={label} className="stats-monument">
                   <div
