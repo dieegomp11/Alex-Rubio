@@ -78,7 +78,7 @@ export const CALENDARIO: Partido[] = [
   { j: 15, fecha: '2026-11-22', hora: '',      rival: 'burgos',     casa: false },
   { j: 16, fecha: '2026-11-28', hora: '16:15', rival: 'tenerife',   casa: true  },
   { j: 17, fecha: '2026-12-06', hora: '18:30', rival: 'ceuta',      casa: false },
-  { j: 18, fecha: '2026-12-13', hora: '',      rival: 'almeria',    casa: false },
+  { j: 18, fecha: '2026-12-11', hora: '20:30', rival: 'almeria',    casa: false },
   { j: 19, fecha: '2026-12-20', hora: '',      rival: 'mallorca',   casa: true  },
   { j: 20, fecha: '2027-01-03', hora: '',      rival: 'cadiz',      casa: false },
   { j: 21, fecha: '2027-01-10', hora: '',      rival: 'andorra',    casa: true  },
